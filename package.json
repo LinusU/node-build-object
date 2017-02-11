@@ -2,5 +2,15 @@
   "name": "build-object",
   "version": "0.0.0",
   "license": "MIT",
-  "repository": "LinusU/node-build-object"
+  "repository": "LinusU/node-build-object",
+  "scripts": {
+    "test": "standard && mocha"
+  },
+  "devDependencies": {
+    "mocha": "^3.2.0",
+    "standard": "^8.6.0"
+  },
+  "engines": {
+    "node": "^4.0.0"
+  }
 }
