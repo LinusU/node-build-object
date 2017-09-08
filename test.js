@@ -12,7 +12,6 @@ describe('buildObject', function () {
 
   it('should throw if the key isn\'t a string', function () {
     assert.throws(function () { buildObject([[undefined]]) }, TypeError)
-    assert.throws(function () { buildObject([[0]]) }, TypeError)
     assert.throws(function () { buildObject([[null]]) }, TypeError)
     assert.throws(function () { buildObject([[true]]) }, TypeError)
     assert.throws(function () { buildObject([[{}]]) }, TypeError)
@@ -64,6 +63,18 @@ describe('buildObject', function () {
 
     var output = {
       firstName: undefined
+    }
+
+    assert.deepStrictEqual(buildObject(input), output)
+  })
+
+  it('should build object with number keys', function () {
+    var input = [
+      [0, 'test']
+    ]
+
+    var output = {
+      0: 'test'
     }
 
     assert.deepStrictEqual(buildObject(input), output)
