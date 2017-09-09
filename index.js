@@ -1,5 +1,7 @@
 'use strict'
 
+const allowedKeyTypes = ['string', 'number']
+
 module.exports = function buildObject (items) {
   if (items == null) return {}
 
@@ -14,8 +16,8 @@ module.exports = function buildObject (items) {
       throw new TypeError(`Iterator value ${item} is not an entry object`)
     }
 
-    if (typeof item[0] !== 'string') {
-      throw new TypeError(`Expected key to be a string, got ${typeof item[0]}`)
+    if (allowedKeyTypes.indexOf(typeof item[0]) === -1) {
+      throw new TypeError(`Expected key to be one of types ${allowedKeyTypes.join(', ')}, got ${typeof item[0]}`)
     }
 
     result[item[0]] = item[1]
